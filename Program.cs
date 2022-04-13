@@ -57,7 +57,7 @@ public static class Program
                     string stickertext = components
                         .First(x => x.CustomId == "stickertext").Value;
 
-                    await modal.RespondAsync($"https://ingoh.net/stickers/createsticker.php?image={HttpUtility.UrlEncode(stickername)}&text={HttpUtility.UrlEncode(stickertext)}");
+                    await modal.RespondAsync($"https://ingoh.net/createsticker/{HttpUtility.UrlEncode(stickername)}/{HttpUtility.UrlEncode(stickertext)}");
                 }
             };
         };

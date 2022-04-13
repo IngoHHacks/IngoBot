@@ -22,7 +22,7 @@ namespace IngoBot.Command
         {
             if (await CommandIsEnabled("sticker"))
             {
-                await Context.Channel.SendMessageAsync($"https://ingoh.net/stickers/createsticker.php?image={HttpUtility.UrlEncode(name)}&text={HttpUtility.UrlEncode(text)}");
+                await Context.Channel.SendMessageAsync($"https://ingoh.net/createsticker/{HttpUtility.UrlEncode(name)}/{HttpUtility.UrlEncode(text)}");
             }
             else
             {
@@ -158,7 +158,7 @@ namespace IngoBot.Command
             {
 
                 var httpClient = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Get, $"https://ingoh.net/api.php?prompt&path={model}&text={HttpUtility.UrlEncode(prompt)}");
+                var request = new HttpRequestMessage(HttpMethod.Get, $"https://ingoh.net/capi/{model}/{HttpUtility.UrlEncode(prompt)}");
                 var response = await httpClient.SendAsync(request);
                 var reader = new StreamReader(response.Content.ReadAsStream());
                 var outputText = reader.ReadToEnd();
